@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregunta {{ numero }}</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body> 
+    <form method="post" id="preguntaForm">
+        <header class="header">
+            {% csrf_token %}
+            <h1>Pregunta {{ numero }}/20</h1>
+        </header>
+        <main> 
+            {% if pregunta %}
+                <h2>{{ pregunta.pregunta }}</h2>
+            {% else %}
+                <p>No se encontró la pregunta correspondiente.</p>
+            {% endif %}
+            
+            <div>
+                <textarea name="respuesta" placeholder="Escribe tu respuesta aquí..." rows="4" required></textarea>
+            </div>  
+            
+            <div class="btn-container">
+                {% if numero > 1 %}
+                    <a href="{% url 'Preguntas' numero=numero|add:'-1' %}" class="btn">Pregunta anterior</a>
+                {% endif %}  
+                <button type="submit" id="nextButton" class="btn">Siguiente pregunta</button>
+            </div>
+        </main>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    <div style="text-align: center;">
+        <h2>Procura no responder con monosílabos ni con ironía para obtener un resultado más preciso.</h2>
+    </div>
+
+    <footer>
+        <p>© 2024 - Proyecto Django con Python</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('preguntaForm');
+        const button = document.getElementById('nextButton');
+    
+        form.addEventListener('submit', function() {
+            button.disabled = true;
+            button.textContent = "Procesando...";
+        });
+    </script>
+</body>
+</html>
+

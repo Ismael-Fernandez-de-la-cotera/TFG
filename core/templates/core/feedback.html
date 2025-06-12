@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback del Test</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1>Feedback del test de {{ nombre_usuario }}</h1>
+    </header>
+    <main>
+        <p><b>Gracias por completar el test. A continuación, puedes ver un resumen de tus respuestas junto con la puntuación que el modelo ha asignado a cada una.  
+        La escala va del 1 al 4, donde 1 indica un nivel nulo de ansiedad y 4 un nivel elevado.</b></p>
+
+        <table class="feedback">
+            <tr>
+                <th>N.º</th>
+                <th>Pregunta</th>
+                <th>Tu respuesta</th>
+                <th>Puntuación</th>
+            </tr>
+            {% for r in respuestas %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ r.pregunta.pregunta }}</td>
+                <td>{{ r.respuesta }}</td>
+                <td>{{ r.puntuacion|floatformat:0 }} de 4</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <p><b>Puntuación total: {{ puntuacion_total|floatformat:0 }}</b></p>
+
+        <h3>Responde a las siguientes preguntas para valorar el test:</h3>
+
+        <form method="post">
+            {% csrf_token %}
+            <p>¿Te ha resultado útil el test?</p>
+            <label><input type="radio" name="Ha_resultado_util" value="1" required> Sí</label>
+            <label><input type="radio" name="Ha_resultado_util" value="0"> No</label>
+
+            <p>¿Has entendido todas las preguntas?</p>
+            <label><input type="radio" name="Se_ha_entendido" value="1" required> Sí</label>
+            <label><input type="radio" name="Se_ha_entendido" value="0"> No</label>
+
+            <p>¿Estás de acuerdo, en general, con las puntuaciones asignadas?</p>
+            <label><input type="radio" name="De_acuerdo_puntuaciones" value="1" required> Sí</label>
+            <label><input type="radio" name="De_acuerdo_puntuaciones" value="0"> No</label>
+
+            <p>¿Estás de acuerdo con el resultado final del test?</p>
+            <label><input type="radio" name="De_acuerdo_final" value="1" required> Sí</label>
+            <label><input type="radio" name="De_acuerdo_final" value="0"> No</label>
+
+            <p>¿Recomendarías este test a otra persona?</p>
+            <label><input type="radio" name="Lo_recomienda" value="1" required> Sí</label>
+            <label><input type="radio" name="Lo_recomienda" value="0"> No</label>
+
+
+
+            <br><br>
+            <p>¡Muchas gracias por tu ayuda!</p>
+            <button type="submit" class="btn">Volver a la portada</button>
+        </form>
+    </main>
+    <footer>
+        <p>© 2024 - Proyecto Django con Python</p>
+    </footer>
+</body>
+</html>

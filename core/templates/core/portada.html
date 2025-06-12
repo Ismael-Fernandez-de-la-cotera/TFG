@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de inicio</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+</head>
+<body>
+    <header class="header">
+        <h1>TEST DE ANSIEDAD</h1>
+        <p>¡Hola! Me llamo Ismael, soy alumno de la ETSIDI y este test forma parte de mi TFG.  
+        Si quieres más información sobre el proyecto, haz clic en el botón de abajo. ¡Muchas gracias!</p>
+        <a href="{% url 'informacion' %}" class="btn" style="background-color: #000000; color:#cc6f13;">Pulsa para más información</a>
+    </header>
+    <main>
+        <div>
+            <h2>Responde a las siguientes preguntas antes de comenzar el test</h2>
+            <form method="POST" action="{% url 'portada' %}">
+                {% csrf_token %}
+
+                <label for="nombre">Identificador (solo se utilizará para guardar tus respuestas):</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="">
+
+                {% if error %}
+                    <p class="error">{{ error }}</p>
+                {% endif %}
+
+                <div>
+                    <label for="edad">Selecciona tu edad: <span id="valorEdad">25</span></label><br>
+                    <input type="range" id="edad" name="edad" min="0" max="100" value="25" 
+                    oninput="document.getElementById('valorEdad').textContent = this.value"
+                    style="accent-color: #cc6f13;">
+                </div>
+                
+                <p>Selecciona tu sexo:</p>
+                <label><input type="radio" name="sexo" value="Hombre" required> Hombre</label>
+                <label><input type="radio" name="sexo" value="Mujer" required> Mujer</label>
+                <label><input type="radio" name="sexo" value="Prefiero no decirlo" required> Prefiero no decirlo</label>
+
+                <p>¿Estás de exámenes?</p>
+                <label><input type="radio" name="Esta_de_examenes" value="si" required> Sí</label>
+                <label><input type="radio" name="Esta_de_examenes" value="no" required> No</label>
+
+                <div>
+                    <button type="submit" class="btn">Comenzar el test</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 - Proyecto Django con Python</p>
+    </footer>
+</body>
+</html>

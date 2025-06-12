@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Información</title>
+    <link rel="stylesheet" href="{% static 'core/styles.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2em;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 1em;
+            }
+
+            main p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Información sobre el proyecto</h1>
+    </header>
+    <main>
+        <section>
+            <h2>🧠 Sobre este proyecto</h2>
+            <p>Este test ha sido desarrollado como parte del Trabajo de Fin de Grado (TFG) de un alumno de la ETSIDI, escuela de la UPM, con el objetivo de <strong>explorar el estado emocional y el nivel de ansiedad</strong> de los usuarios.</p>
+
+            <p><strong>⚠️ Importante:</strong><br>
+            Este cuestionario <strong>no tiene validez diagnóstica</strong> y <strong>no sustituye la evaluación de un profesional de la salud mental</strong>. Las respuestas recogidas ayudan a ofrecer una orientación general sobre el nivel de tensión o ansiedad percibido en el momento, pero <strong>no deben interpretarse como un diagnóstico clínico</strong>.</p>
+        </section>
+
+        <section>
+            <h2>📊 ¿Qué mide este test?</h2>
+            <p>Este test se basa en el test de ansiedad estado, ampliamente utilizado en psicología para medir <strong>el nivel de ansiedad actual</strong>, mediante preguntas sobre tranquilidad, preocupación, descanso, entre otros aspectos.</p>
+            <p>Al finalizar, se calcula una puntuación total que se interpreta de forma orientativa, mostrando un mensaje general según intervalos definidos.</p>
+        </section>
+
+        <section>
+            <h2>🔒 Privacidad</h2>
+            <p>Los datos introducidos no se comparten con terceros y se utilizan exclusivamente para fines de este proyecto.</p>
+        </section>
+
+        <div style="text-align: center; margin-top: 2em;">
+            <a href="{% url 'portada' %}" class="btn">Volver a la portada</a>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 - Proyecto Django con Python</p>
+    </footer>
+</body>
+</html>

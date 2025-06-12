@@ -1,0 +1,195 @@
+/* Página base */
+body {
+    font-family: 'Arial', sans-serif;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+/* Encabezado de portada */
+.header {
+    background-color: #cc6f13;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 4vw 0; /* Ajuste de tamaño */
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 3vw; /* Ajuste de tamaño */
+}
+
+.header p {
+    font-size: 1.6rem; /* Se ajusta a un tamaño fijo más razonable */
+    margin: 1vw 0 0;
+}
+
+/* Contenido principal de la portada */
+main {
+    text-align: center;
+    flex: 1;
+    padding: 2vw 4%; /* Espaciado flexible */
+}
+
+/* Pie de página */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 3vw 0; /* Espaciado flexible */
+}
+
+/* Botón */
+.btn {
+    display: inline-block;
+    padding: 0.8em 2.5em; /* Ajuste de tamaño para no ser tan grande */
+    background-color: #cc6f13;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem; /* Se reduce un poco */
+    margin-top: 2.5vw;
+}
+
+.btn:hover {
+    background-color: #a7590b;
+}
+
+.btn-container {
+    display: flex;
+    gap: 50px; /* Espacio entre botones */
+    justify-content: center; /* Centrar los botones */
+}
+
+
+/* Textarea */
+textarea {
+    width: 80%;
+    padding: 1.5em;
+    margin-top: 2vw;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    font-size: 1.1rem; /* Ajuste de tamaño */
+    font-family: Arial, sans-serif;
+    resize: vertical;
+}
+
+/* Mensajes */
+.mensaje-nada {
+    color: #36be17; /* Verde */
+}
+.mensaje-bajo {
+    color: #f4e32d; /* Naranja */
+}
+.mensaje-moderado {
+    color: #df700f; /* Rojo */
+}
+.mensaje-alto {
+    color: #df0f0f; /* Rojo */
+}
+
+
+.contenedor-final {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.tabla-lateral {
+    flex: 1;
+}
+
+.tabla-lateral table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.tabla-lateral th,
+.tabla-lateral td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.tabla-lateral th {
+    background-color: #f2f2f2;
+}
+
+.contenido-principal {
+    flex: 2;
+}
+
+.boton-centro {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+table.feedback {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+
+table.feedback th, table.feedback td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+table.feedback th {
+    background-color: #000000;
+    color: white;
+}
+
+table.feedback tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 7vw; /* Reducido a un tamaño más manejable */
+    }
+
+    .header p {
+        font-size: 1.4rem; /* Mantener un tamaño más razonable */
+    }
+
+    .btn {
+        font-size: 1.2rem; /* Ajuste a un tamaño más pequeño */
+    }
+
+    textarea {
+        font-size: 1.2rem; /* Ajuste de tamaño */
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 9vw; /* Ajustado para pantallas más pequeñas */
+    }
+
+    .header p {
+        font-size: 1.2rem; /* Tamaño más pequeño y manejable */
+    }
+
+    .btn {
+        font-size: 1.2rem; /* Ajustado a un tamaño pequeño */
+    }
+
+    textarea {
+        font-size: 1.2rem; /* Más pequeño en pantallas pequeñas */
+    }
+
+    footer {
+        padding: 4vw 0; /* Ajuste en el pie de página */
+    }
+}
+
